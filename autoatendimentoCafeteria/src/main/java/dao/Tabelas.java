@@ -18,8 +18,10 @@ public class Tabelas {
                     + "nome varchar(200) not null, email varchar(100) not null, telefone varchar(11) not null, "
                     + "endereco varchar (100) not null, senha varchar(200) not null, confirmarSenha varchar(200) not null, UNIQUE(email) ";
             String categoriaTabela = "create table categoria (id int AUTO_INCREMENT primary key, nomeCategoria varchar(200))";
+            String produtoTabela = "create table produto(id int AUTO_INCREMENT primary key, nome varchar(200), categoria varchar(200), preco money ";
             BDOperacoes.setInformacao(clienteTabela, "Tabela Cliente criada com sucesso");
             BDOperacoes.setInformacao(categoriaTabela, "Tabela Categoria criada com sucesso");
+             BDOperacoes.setInformacao(produtoTabela, "Tabela Produto criada com sucesso");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }

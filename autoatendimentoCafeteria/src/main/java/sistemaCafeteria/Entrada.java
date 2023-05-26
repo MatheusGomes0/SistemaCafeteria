@@ -94,11 +94,11 @@ public String email;
                 btnNovoProdutoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnNovoProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 390, 190, -1));
+        getContentPane().add(btnNovoProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 480, 190, -1));
 
         btnDeletarProduto.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         btnDeletarProduto.setText("Deletar Produto");
-        getContentPane().add(btnDeletarProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 470, 190, -1));
+        getContentPane().add(btnDeletarProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 520, 190, -1));
 
         btnCategoria.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         btnCategoria.setText("Adicionar Categoria");
@@ -130,6 +130,7 @@ public String email;
 
     private void btnNovoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoProdutoActionPerformed
         // TODO add your handling code here:
+      new CadastraProduto().setVisible(true);
     }//GEN-LAST:event_btnNovoProdutoActionPerformed
 
     private void btnCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCategoriaActionPerformed
