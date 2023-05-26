@@ -134,6 +134,7 @@ public String email;
 
     private void btnCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCategoriaActionPerformed
         // TODO add your handling code here:
+        new CadatraCategoria().setVisible(true);
     }//GEN-LAST:event_btnCategoriaActionPerformed
 
     /**
