@@ -5,6 +5,7 @@
 package sistemaCafeteria;
 
 import dao.CategoriaDao;
+import dao.ItensPedidoDao;
 import dao.PedidoDao;
 import java.util.ArrayList;
 import javax.swing.JFormattedTextField;
@@ -16,6 +17,7 @@ import java.util.Date;
 import java.util.Iterator;
 import javax.swing.table.TableModel;
 import modelo.Categoria;
+import modelo.ItensPedido;
 import modelo.Pedido;
 import modelo.Produto;
 
@@ -407,6 +409,9 @@ public class FazerPedido extends javax.swing.JFrame {
 
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
         // TODO add your handling code here:
+        int quantidade = (Integer) jSpinner1.getValue();
+
+        jSpinner1.setValue(quantidade);
         String clienteNome = txtCliNome.getText();
         String clienteTelefone = txtCliTelefone.getText();
         String clienteEmail = txtCliEmail.getText();
@@ -422,6 +427,10 @@ public class FazerPedido extends javax.swing.JFrame {
         pedido.setData(dataHoje);
         pedido.setTotal(total);
         PedidoDao.salvar(pedido);
+        ItensPedido itensPedido = new ItensPedido();
+        itensPedido.setCod_item(1+pedidoId);
+        itensPedido.setQtn_itens(quantidade);
+        ItensPedidoDao.salvar(itensPedido);
        //ir direto para a tela de pagamento 
         setVisible(false);
         new TelaPagamento().setVisible(true);

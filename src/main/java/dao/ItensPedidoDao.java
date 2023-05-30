@@ -4,10 +4,16 @@
  */
 package dao;
 
+import modelo.ItensPedido;
+
+
 /**
  *
  * @author mathe
  */
 public class ItensPedidoDao {
-    
+    public static void salvar(ItensPedido itenspedido) {
+        String query = "insert into pedido values('" + itenspedido.getCod_item() + "','" + itenspedido.getQtn_itens()+"')";
+        BDOperacoes.setInformacao(query, "Valores do pedido adicionado com sucesso");
+    }
 }
