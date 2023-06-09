@@ -1,20 +1,15 @@
 package sistemaCafeteria;
 
-
 import dao.ClienteDao;
 import javax.swing.JOptionPane;
 import modelo.Cliente;
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 
 /**
  *
  * @author mathe
  */
 public class Login extends javax.swing.JFrame {
-    
+
     /**
      * O botão do Login começa inabilitado
      */
@@ -22,12 +17,16 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         btnLogin.setEnabled(false);
     }
-   
-    public void validarCampo(){
+
+    /**
+     * Verifica se todos os campos estão preenchidos da forma correta E se caso
+     * estiver habilita o botão
+     */
+    public void validarCampo() {
         String email = txtEmail.getText();
         String senha = txtSenha.getText();
-        
-        if(!email.equals("") && !senha.equals("")){
+
+        if (!email.equals("") && !senha.equals("")) {
             btnLogin.setEnabled(true);
         } else {
             btnLogin.setEnabled(false);
@@ -139,28 +138,28 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         String email = txtEmail.getText();
         String senha = txtSenha.getText();
-        
+
         Cliente cliente = null;
         cliente = ClienteDao.Login(email, senha);
-        if(cliente == null){
-            JOptionPane.showMessageDialog(null, "Email ou senha errada!","Mensagem", JOptionPane.ERROR_MESSAGE);
+        if (cliente == null) {
+            JOptionPane.showMessageDialog(null, "Email ou senha errada!", "Mensagem", JOptionPane.ERROR_MESSAGE);
         } else {
-           /**
-            * Se o email estuver no banco, vai direto a tela de entrada
-            */
+            /**
+             * Se o email estiver no banco, vai direto a tela de entrada
+             */
             setVisible(false);
             new Entrada(email).setVisible(true);
-        }   
+        }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         // TODO add your handling code here:
         int sair = JOptionPane.showConfirmDialog(null, "Você realmente deseja sair?", "Escolha", JOptionPane.YES_NO_OPTION);
-        if(sair == 0){
-           //Se ele escolher SIM
-           System.exit(0);
+        if (sair == 0) {
+            //Se ele escolher SIM
+            System.exit(0);
         }
-        
+
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void txtEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyReleased
@@ -173,34 +172,8 @@ public class Login extends javax.swing.JFrame {
         validarCampo();
     }//GEN-LAST:event_txtSenhaKeyReleased
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Login().setVisible(true);

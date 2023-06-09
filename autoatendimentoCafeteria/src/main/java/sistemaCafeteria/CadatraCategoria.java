@@ -1,15 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package sistemaCafeteria;
+
 import modelo.Categoria;
 import dao.CategoriaDao;
 import java.util.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.table.DefaultTableModel;
+
 /**
+ * Tela para cadastrar uma categoria nova
  *
  * @author mathe
  */
@@ -22,12 +21,16 @@ public class CadatraCategoria extends javax.swing.JFrame {
         initComponents();
         btnAdicionar.setEnabled(false);
     }
-    
-    public void validarCampo(){
+
+    /**
+     * Verifica se todos os campos estão preenchidos da forma correta E se caso
+     * estiver habilita o botão
+     */
+    public void validarCampo() {
         String categoria = txtNomeCategoria.getText();
-        if(!categoria.equals("")){
+        if (!categoria.equals("")) {
             btnAdicionar.setEnabled(true);
-        } else{
+        } else {
             btnAdicionar.setEnabled(false);
         }
     }
@@ -81,7 +84,7 @@ public class CadatraCategoria extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null}
             },
             new String [] {
                 "ID", "Categoria"
@@ -137,13 +140,13 @@ public class CadatraCategoria extends javax.swing.JFrame {
         /**
          * Fecha a página de cadastrar categoria
          */
-        
+
         setVisible(false);
 
     }//GEN-LAST:event_btnFecharActionPerformed
 
     private void txtNomeCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeCategoriaActionPerformed
-        
+
     }//GEN-LAST:event_txtNomeCategoriaActionPerformed
 
     private void txtNomeCategoriaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeCategoriaKeyReleased
@@ -155,7 +158,7 @@ public class CadatraCategoria extends javax.swing.JFrame {
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         // TODO add your handling code here:
         Categoria categoria = new Categoria();
-        
+
         categoria.setName(txtNomeCategoria.getText());
         CategoriaDao.adicionar(categoria);
         setVisible(false);
@@ -164,55 +167,28 @@ public class CadatraCategoria extends javax.swing.JFrame {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
-        
+
         /**
-         * Escrever as categorias adicionadas na tabela
+         * Escreve as categorias adicionadas na tabela
          */
         DefaultTableModel dtm = (DefaultTableModel) jTable2.getModel();
         ArrayList<Categoria> lista = CategoriaDao.getAllRecords();
         Iterator<Categoria> itr = lista.iterator();
-        
-        while(itr.hasNext()){
+
+        while (itr.hasNext()) {
             Categoria categoriaObj = itr.next();
             dtm.addRow(new Object[]{categoriaObj.getId(), categoriaObj.getName()});
-            
+
         }
     }//GEN-LAST:event_formComponentShown
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jTable2MouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadatraCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadatraCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadatraCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadatraCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new CadatraCategoria().setVisible(true);

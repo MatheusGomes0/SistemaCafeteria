@@ -5,31 +5,31 @@
 package sistemaCafeteria;
 
 import javax.swing.JOptionPane;
+import modelo.Pagamento;
 
 /**
- *
+ * Tela de entrada do sistema
  * @author mathe
  */
 public class Entrada extends javax.swing.JFrame {
-public String email;
-    /**
-     * Creates new form Entrada
-     */
+
+    public String email;
+
+   
     public Entrada() {
         initComponents();
     }
-
+    
     public Entrada(String clienteEmail) {
         initComponents();
         email = clienteEmail;
-        
+
         /**
-         * Se não for o admin logando no sistema 
-         * Não mostrar os botões de  cadastrar e deletar produtos 
+         * Se não for o admin logando no sistema Não mostrar os botões de
+         * cadastrar e deletar produtos
          */
-        if(!email.equals("admin@gmail.com")){
+        if (!email.equals("admin@gmail.com")) {
             btnNovoProduto.setVisible(false);
-            btnDeletarProduto.setVisible(false);
             btnCategoria.setVisible(false);
         }
     }
@@ -44,13 +44,11 @@ public String email;
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         btnNovoProduto = new javax.swing.JButton();
-        btnDeletarProduto = new javax.swing.JButton();
         btnCategoria = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -59,20 +57,31 @@ public String email;
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 3, 15)); // NOI18N
-        jButton1.setText("Pagamento");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 120, -1));
-
-        jButton2.setFont(new java.awt.Font("Segoe UI", 3, 15)); // NOI18N
-        jButton2.setText("Status");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 114, -1));
+        jButton1.setText("Fazer pedido");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 130, -1));
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 3, 15)); // NOI18N
-        jButton3.setText("Conta");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 114, -1));
+        jButton3.setText("Pagar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 130, -1));
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 3, 15)); // NOI18N
         jButton4.setText("Cardápio");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 114, -1));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 130, -1));
 
         btnSair.setFont(new java.awt.Font("Segoe UI", 3, 15)); // NOI18N
         btnSair.setText("Sair");
@@ -94,11 +103,7 @@ public String email;
                 btnNovoProdutoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnNovoProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 480, 190, -1));
-
-        btnDeletarProduto.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        btnDeletarProduto.setText("Deletar Produto");
-        getContentPane().add(btnDeletarProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 520, 190, -1));
+        getContentPane().add(btnNovoProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 470, 190, -1));
 
         btnCategoria.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         btnCategoria.setText("Adicionar Categoria");
@@ -130,13 +135,31 @@ public String email;
 
     private void btnNovoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoProdutoActionPerformed
         // TODO add your handling code here:
-      new CadastraProduto().setVisible(true);
+        new CadastraProduto().setVisible(true);
     }//GEN-LAST:event_btnNovoProdutoActionPerformed
 
     private void btnCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCategoriaActionPerformed
         // TODO add your handling code here:
         new CadatraCategoria().setVisible(true);
     }//GEN-LAST:event_btnCategoriaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new FazerPedido(email).setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new Cardapio().setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new TelaPagamento().setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,11 +198,9 @@ public String email;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCategoria;
-    private javax.swing.JButton btnDeletarProduto;
     private javax.swing.JButton btnNovoProduto;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
